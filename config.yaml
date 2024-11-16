@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-config
+  namespace: db
+data:
+  MYSQL_DATABASE: "wordpress"  # Database name used by MariaDB
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wordpress-config  # Name of this config
+  namespace: wp  # It will go in the WordPress "folder"
+data:
+  WORDPRESS_DB_HOST: "mariadb.db.svc.cluster.local"  # Where WordPress will find the database
+  WORDPRESS_DB_NAME: "wordpress"  # Name of the database
+
+
